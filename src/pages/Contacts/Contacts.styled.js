@@ -12,3 +12,11 @@ export const Wrapper = styled.div`
   padding: 10px;
   margin-top: 10px;
 `;
+
+export const MainTitle = styled.h1`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+`;
