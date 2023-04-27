@@ -1,12 +1,14 @@
 import { NameLabel, FormInput, FormButton } from './Register.styled';
 import React, { useState } from 'react';
-import { selectContact } from 'redux/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import authOperations from '../../redux/auth/auth-operations';
+// import { register } from '../../redux/auth/auth-operations';
 
 export const Register = () => {
   const [name, setName] = useState();
-  const [phone, setPhone] = useState('');
-  const contacts = useSelector(selectContact);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -14,8 +16,11 @@ export const Register = () => {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setPhone(value);
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
         break;
 
       default:
@@ -25,13 +30,12 @@ export const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (contacts.find(contact => contact.name === name)) {
-      return alert(`${name} is already in contacts.`);
-    } else {
-      setName('');
-      setPhone('');
-    }
+    dispatch(authOperations.register({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label>
@@ -41,25 +45,27 @@ export const Register = () => {
           name="name"
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
         />
       </label>
-
       <label>
-        <NameLabel>Phone Number</NameLabel>
+        <NameLabel>Email</NameLabel>
         <FormInput
-          type="tel"
-          name="number"
-          value={phone}
+          type="email"
+          name="email"
+          value={email}
           onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
         />
       </label>
-      <FormButton type="submit">Add contact</FormButton>
+      <label>
+        <NameLabel>Password</NameLabel>
+        <FormInput
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+        />
+      </label>
+      <FormButton type="submit">Register</FormButton>
     </form>
   );
 };

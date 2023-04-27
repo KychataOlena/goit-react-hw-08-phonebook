@@ -1,16 +1,19 @@
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import authSelectors from '../../redux/auth/auth-selectors';
 // import { NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Wrapper, Header, Link } from './SharedLayout.styled';
+import { Wrapper, Header } from './SharedLayout.styled';
+import { UserMenu } from 'components/UserMenu/userMenu';
+import { Navigation } from 'components/Navigation/Navigation';
 
 export const SharedLayout = () => {
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <Wrapper>
       <Header>
-        <nav>
-          <Link to="/">Register</Link>
-          <Link to="/movies">Contacts</Link>
-        </nav>
+        {isLoggedIn ? <UserMenu /> : <Navigation />}
+        {/* {isLoggedIn ? <UserMenu /> : <Navigation />} */}
       </Header>
       <Suspense>
         <Outlet />
