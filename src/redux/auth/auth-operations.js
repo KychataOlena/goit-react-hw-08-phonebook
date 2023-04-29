@@ -45,10 +45,17 @@ const fetchCurrentUser = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
     token.set(persistedToken);
+    // try {
+    //   const { data } = await axios.get('/users/current');
+    //   return data;
+    // } catch (error) {}
+    token(token);
     try {
-      const { data } = await axios.get('/users/current');
-      return data;
-    } catch (error) {}
+      const res = await axios.get('/users/current');
+      return res.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
 );
 

@@ -27,7 +27,7 @@ export const FormButton = styled.button`
   display: block;
   width: 137px;
   height: 34px;
-  background: linear-gradient(96.12deg, #d4145a -21.03%, #3d5bf5 103.56%);
+  background-color: orangered;
   border-radius: 9px;
   text-decoration: none;
   border: none;

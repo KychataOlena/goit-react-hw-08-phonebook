@@ -14,7 +14,7 @@ export const SharedLayout = () => {
     <Wrapper>
       <Header>
         <NavBox>
-          {isLoggedIn && <HeaderLink to="/contacts">Contacts</HeaderLink>}
+          {isLoggedIn && <HeaderLink to="/contacts"></HeaderLink>}
           {isLoggedIn ? <UserMenu /> : <Navigation />}
         </NavBox>
       </Header>

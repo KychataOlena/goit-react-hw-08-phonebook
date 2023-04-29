@@ -20,9 +20,9 @@ export const ContactList = () => {
 
   return (
     <ContactUl>
-      {getVisibleContacts().map(({ id, name, phone }) => (
+      {getVisibleContacts().map(({ id, name, number }) => (
         <ContactLi key={id}>
-          <ContactItem id={id} contact={name} number={phone} />
+          <ContactItem id={id} contact={name} number={number} />
         </ContactLi>
       ))}
     </ContactUl>
