@@ -12,9 +12,9 @@
 // export default store;
 
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import authReducer from '../redux/auth/auth-slice';
-import { contactsReducer } from './contactsSlice';
-import { filterReducer } from './filtersSlice';
+import authReducer from './auth/auth-slice';
+import { contactsReducer } from './contacts/contactsSlice';
+import { filterReducer } from './contacts/filtersSlice';
 import {
   persistStore,
   persistReducer,

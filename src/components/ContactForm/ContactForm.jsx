@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { NameLabel, FormInput, FormButton } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { addContact } from 'redux/operations';
-import { selectContact } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
+import { selectContact } from 'redux/contacts/selectors';
 
 export function ContactForm() {
   const [name, setName] = useState();
@@ -48,7 +48,7 @@ export function ContactForm() {
           name="name"
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />

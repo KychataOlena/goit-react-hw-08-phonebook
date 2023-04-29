@@ -4,15 +4,23 @@ import { Register } from '../../pages/Register/Register';
 import { SharedLayout } from '../SharedLayout/SharedLayout';
 import { Login } from '../../pages/Login/Login';
 // import { Wrapper } from './App.styled';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import authOperations from 'redux/auth/auth-operations';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
   return (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route path="register" element={<Register />} />
-          {/* <Route path="login" element={<Login />} /> */}
           <Route path="login" element={<Login />} />
+          <Route path="contacts" element={<Contacts />} />
         </Route>
       </Routes>
     </>
