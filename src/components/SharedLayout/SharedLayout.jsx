@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
 // import { NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
