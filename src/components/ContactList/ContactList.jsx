@@ -9,7 +9,6 @@ import { ContactLi, ContactUl } from './ContactList.styled';
 export const ContactList = () => {
   const contacts = useSelector(selectContact);
   const contactFilter = useSelector(selectStatusFilter);
-  // console.log(contactFilter);
 
   const getVisibleContacts = () => {
     const normilizeFilter = contactFilter.toLowerCase();

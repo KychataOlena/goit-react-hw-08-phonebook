@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import authSelectors from '../../redux/auth/auth-selectors';
-// import { NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Wrapper, Header, HeaderLink, NavBox } from './SharedLayout.styled';
 import { UserMenu } from 'components/UserMenu/userMenu';

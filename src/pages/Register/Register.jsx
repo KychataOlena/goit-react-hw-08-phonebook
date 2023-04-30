@@ -1,11 +1,10 @@
 import { NameLabel, FormInput, FormButton } from './Register.styled';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations';
-// import { register } from '../../redux/auth/auth-operations';
+import { register } from '../../redux/auth/auth-operations';
 
 export const Register = () => {
-  const [name, setName] = useState();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -30,7 +29,7 @@ export const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
+    dispatch(register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
